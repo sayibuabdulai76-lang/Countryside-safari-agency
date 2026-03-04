@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional travel services in Northern Ghana: Flight bookings, hotel reservations, car rentals, and guided tours.">
+    <title>Our Services | Countryside Safari Agency</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- BRAND DESIGN SYSTEM --- */
+        :root {
+            --primary: #2D5A27;    /* Savannah Green */
+            --accent: #E67E22;     /* Earthy Orange */
+            --dark: #1F2937;       /* Charcoal */
+            --light-bg: #FDFBF7;   /* Warm Paper */
+            --white: #FFFFFF;
+            --text-muted: #6B7280;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- BASE RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        .container { width: 90%; max-width: 1140px; margin: 0 auto; }
+        .section { padding: 80px 0; }
+        .text-center { text-align: center; }
+
+        /* --- UI COMPONENTS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: #23471e; transform: translateY(-2px); }
+        
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { font-weight: 500; font-size: 0.95rem; }
+        .nav-menu a:hover { color: var(--primary); }
+
+        /* --- PAGE HEADER --- */
+        .page-hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 10px; }
+
+        /* --- SERVICES GRID --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--light-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        .service-card h3 { margin-bottom: 15px; font-size: 1.4rem; color: var(--primary); }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+        .service-card ul { margin-top: auto; padding-top: 15px; border-top: 1px solid #f0f0f0; }
+        .service-card li { font-size: 0.85rem; color: var(--dark); margin-bottom: 8px; position: relative; padding-left: 20px; }
+        .service-card li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+
+        /* --- CTA SECTION --- */
+        .contact-cta {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 60px;
+        }
+        .contact-cta h2 { margin-bottom: 20px; }
+        .contact-cta p { opacity: 0.9; margin-bottom: 30px; }
+
+        /* --- FOOTER --- */
+        footer { background: #111; color: #aaa; padding: 60px 0 20px; margin-top: 80px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .nav-menu { display: none; }
+            .page-hero h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">Countryside Safari <span>Ghana</span></a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="home page.html">Home</a></li>
+                    <li><a href="services.html" style="color: var(--primary); font-weight: bold;">Services</a></li>
+                    <li><a href="home page.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Comprehensive Travel Solutions</h1>
+            <p>Reliable, local, and transparent services for your Northern Ghana experience.</p>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="text-center">
+            <h2 style="font-size: 2.5rem;">How We Support Your Journey</h2>
+            <p style="color: var(--text-muted); max-width: 700px; margin: 20px auto;">We provide end-to-end travel management, from domestic flight scheduling to on-the-ground support in the Savannah and Northern regions.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+                </div>
+                <h3>Domestic Flight Booking</h3>
+                <p>More than just a ticket—we provide comprehensive scheduling solutions for individuals and corporate clients.</p>
+                <ul>
+                    <li>Accra ⇄ Tamale, Wa, Kumasi & more</li>
+                    <li>Advanced payment options for corporate</li>
+                    <li>Seamless schedule management</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                </div>
+                <h3>Hotel & Conference Booking</h3>
+                <p>Strategic reservations across the Northern, Upper East/West, and Savannah regions.</p>
+                <ul>
+                    <li>Quality monitoring of rooms and facilities</li>
+                    <li>24/7 local support in Tamale</li>
+                    <li>Emergency assistance in-region</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h3>Individual & Group Tours</h3>
+                <p>Custom trips from Accra to Northern Ghana with a focus on safety and storytelling.</p>
+                <ul>
+                    <li>Expatriate & international tourist focus</li>
+                    <li>Trained local expert guides</li>
+                    <li>Quarterly open group tours</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="10" width="22" height="8" rx="2"/><path d="M7 10l2-6h6l2 6M5 18v2M19 18v2"/></svg>
+                </div>
+                <h3>Reliable Car Rentals</h3>
+                <p>Access to rugged 4x4s, minibuses, and saloon cars for any terrain.</p>
+                <ul>
+                    <li>Chauffeur-driven or insured self-drive</li>
+                    <li>Airport transfers (Tamale & Wa)</li>
+                    <li>Reliable institutional rentals</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="icon-box">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </div>
+                <h3>Travel Add-ons</h3>
+                <p>Critical value-added services to make your transition into Ghana seamless.</p>
+                <ul>
+                    <li>SIM and high-speed data setup</li>
+                    <li>Forex support for international guests</li>
+                    <li>Indigenous community-tour experiences</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact-cta">
+            <div class="container">
+                <h2>Ready to book or inquire?</h2>
+                <p>Contact our Tamale head office for 24/7 support and regional expertise.</p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="tel:+233248780352" class="btn btn-primary" style="background: var(--accent);">Call: 024-878-0352</a>
+                    <a href="mailto:bookings@cssa.agency" class="btn btn-primary" style="background: white; color: var(--primary);">Email Us Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 SayTech Ghana. All Rights Reserved.</p>
+            <div class="footer-bottom" style="margin-top: 20px;">
+                <a href="home page.html">Home</a> | <a href="home page.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

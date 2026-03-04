@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Authentic Northern Ghana safari and cultural tours. Experience Mole National Park, Larabanga, and local traditions with Northern Safari Ghana.">
+    <title>Countryside Safari Agency</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- BRAND DESIGN SYSTEM --- */
+        :root {
+            --primary: #2D5A27;    /* Savannah Green */
+            --accent: #E67E22;     /* Earthy Orange */
+            --dark: #1F2937;       /* Charcoal */
+            --light-bg: #FDFBF7;   /* Warm Paper */
+            --white: #FFFFFF;
+            --text-muted: #6B7280;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- BASE RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; border-radius: 8px; }
+        .container { width: 90%; max-width: 1140px; margin: 0 auto; }
+        .section { padding: 80px 0; }
+        .text-center { text-align: center; }
+
+        /* --- UI COMPONENTS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: #23471e; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .logo span { color: var(--accent); }
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { font-weight: 500; font-size: 0.95rem; }
+        .nav-menu a:hover { color: var(--primary); }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; }
+
+        /* --- HERO --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+        }
+        .hero-content { max-width: 700px; }
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 3.8rem); margin-bottom: 20px; line-height: 1.1; }
+        .hero p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+        .hero-cta { display: flex; gap: 15px; }
+
+        /* --- GRID SYSTEM --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        /* --- TOURS & CARDS --- */
+        .card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); transition: var(--transition); border: 1px solid #f0f0f0; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.1); }
+        .card-img { height: 220px; background-size: cover; background-position: center; }
+        .card-body { padding: 25px; }
+        .card-meta { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--accent); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; }
+        .card-title { margin-bottom: 12px; font-size: 1.3rem; }
+        .card-text { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+
+        /* --- WHY US --- */
+        .why-section { background: var(--light-bg); }
+        .feature-item { text-align: left; padding: 20px; }
+        .feature-icon { width: 50px; height: 50px; background: var(--primary); border-radius: 50%; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+
+        /* --- CONTACT FORM --- */
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+        input, select, textarea { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; 
+            font-family: inherit; font-size: 1rem; transition: var(--transition);
+        }
+        input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1); }
+
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25D366; color: white;
+            padding: 12px 24px; border-radius: 50px;
+            display: flex; align-items: center; gap: 10px;
+            font-weight: 600; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-logo { color: white; font-size: 1.3rem; margin-bottom: 20px; font-weight: 700; }
+        .footer-title { color: white; margin-bottom: 20px; font-weight: 600; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; }
+
+        /* --- MOBILE ADAPTATIONS --- */
+        @media (max-width: 768px) {
+            .nav-menu { 
+                display: none; position: absolute; top: 80px; left: 0; width: 100%; 
+                background: white; flex-direction: column; padding: 40px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+            }
+            .nav-menu.active { display: flex; }
+            .hamburger { display: flex; }
+            .hero h1 { font-size: 2.5rem; }
+            .contact-container { grid-template-columns: 1fr; gap: 40px; }
+            .hero-cta { flex-direction: column; }
+            .section { padding: 60px 0; }
+        }
+
+        /* --- BRAND DESIGN SYSTEM --- */
+        :root {
+            --primary: #2D5A27;    /* Savannah Green */
+            --accent: #E67E22;     /* Earthy Orange */
+            --dark: #1F2937;       /* Charcoal */
+            --light-bg: #FDFBF7;   /* Warm Paper */
+            --white: #FFFFFF;
+            --text-muted: #6B7280;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- BASE RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; border-radius: 8px; }
+        .container { width: 90%; max-width: 1140px; margin: 0 auto; }
+        .section { padding: 80px 0; }
+        .text-center { text-align: center; }
+
+        /* --- UI COMPONENTS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            text-align: center;
+        }
+        .btn-primary { background: var(--primary); color: var(--white); }
+        .btn-primary:hover { background: #23471e; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: var(--white); }
+
+        /* --- NAVIGATION --- */
+        header {
+            background: var(--white);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        
+        /* UPDATED LOGO CSS */
+        .logo { 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+        }
+        .logo img { 
+            height: 50px; 
+            width: auto; 
+            border-radius: 4px; 
+        }
+        .logo span { color: var(--accent); }
+
+        .nav-menu { display: flex; gap: 30px; align-items: center; }
+        .nav-menu a { font-weight: 500; font-size: 0.95rem; }
+        .nav-menu a:hover { color: var(--primary); }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .hamburger span { width: 25px; height: 3
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="logo.jpeg" class="logo">Countryside Safari <span>Agency</span></a>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#why-us">Why Us</a></li>
+                    <li><a href="#contact" class="btn btn-primary">Book Your Tour</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover the Soul of Ghana, One Journey at a Time.</h1>
+                <p>Authentic safari experiences, ancient history, and warm local traditions. We connect you to the real North with safety and integrity.</p>
+                <div class="hero-cta">
+                    <a href="#tours" class="btn btn-primary">View Our Safaris</a>
+                    <a href="#contact" class="btn btn-outline" style="color: white; border-color: white;">Inquire Directly</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container" id="tours">
+        <div class="text-center" style="margin-bottom: 50px;">
+            <h2 style="font-size: 2.5rem;">Featured Experiences</h2>
+            <p style="color: var(--text-muted);">Curated journeys led by guides who call the North home.</p>
+        </div>
+        <div class="grid">
+            <article class="card">
+                <div class="card-img" style="background-image: url('mole national park.jpg');"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span>3 Days</span><span>Wildlife</span></div>
+                    <h3 class="card-title">Mole National Park Safari</h3>
+                    <p class="card-text">Witness elephants in their natural habitat and explore the lush savannah with our expert trackers.</p>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img" style="background-image: url('Larabanga mosque.jpg');"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span>1 Day</span><span>Heritage</span></div>
+                    <h3 class="card-title">Larabanga Mosque & Mystic Stone</h3>
+                    <p class="card-text">Step back in time at Ghana’s oldest mosque and learn the legends of the ancient mud-and-stick architecture.</p>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img" style="background-image: url('dagbong.jpg');"></div>
+                <div class="card-body">
+                    <div class="card-meta"><span>2 Days</span><span>Culture</span></div>
+                    <h3 class="card-title">Village Artisan Immersion</h3>
+                    <p class="card-text">Meet traditional weavers and potters in local Dagbon villages. An authentic look at craftsmanship.</p>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%;">Enquire Now</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="section why-section" id="why-us">
+        <div class="container">
+            <div class="grid">
+                <div class="feature-item">
+                    <div class="feature-icon">1</div>
+                    <h3 style="margin-bottom: 15px;">Local Roots</h3>
+                    <p>We are based in Tamale. Our guides are sons and daughters of the soil with deep cultural knowledge.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">2</div>
+                    <h3 style="margin-bottom: 15px;">Safety & Trust</h3>
+                    <p>From well-maintained vehicles to transparent pricing, your peace of mind is our first priority.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">3</div>
+                    <h3 style="margin-bottom: 15px;">Responsible Travel</h3>
+                    <p>We believe in respectful tourism that supports local communities and protects our wildlife.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container" id="contact">
+        <div class="contact-container">
+            <div>
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Let’s Plan Your Journey</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem; color: var(--text-muted);">Whether you are visiting from Accra or flying in from abroad, we handle all the details so you can enjoy the magic of Northern Ghana.</p>
+                
+                <div style="margin-bottom: 15px;"><strong>Email:</strong> booking@cssa.agency</div>
+                <div style="margin-bottom: 15px;"><strong>Location:</strong> Tamale, Northern Region, Ghana</div>
+                <div><strong>Response Time:</strong> Within 12 hours</div>
+            </div>
+            
+            <form id="bookingForm" action="https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec" method="POST">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="userName" required placeholder="Your name">
+                </div>
+                <div class="grid" style="gap: 15px; grid-template-columns: 1fr 1fr; margin-bottom: 20px;">
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="userEmail" required placeholder="email@address.com">
+                    </div>
+                    <div>
+                        <label>Country</label>
+                        <input type="text" name="userCountry" required placeholder="e.g. Ghana, UK, USA">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Tour</label>
+                    <select name="tourSelect">
+                        <option>Mole Elephant Safari</option>
+                        <option>Larabanga Heritage Tour</option>
+                        <option>Northern Village Immersion</option>
+                        <option>Custom Itinerary (Research/NGO/Photo)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message / Travel Dates</label>
+                    <textarea name="userMsg" rows="4" placeholder="Tell us about your group size and when you'd like to visit..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Booking Enquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">Countryside Safari <span>Agency</span></div>
+                    <p>Connecting the world and the Diaspora to the beauty of the Ghana with honesty and warmth.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#tours">Safaris</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Our Focus</h4>
+                    <ul class="footer-links">
+                        <li>Mole National Park</li>
+                        <li>Cultural Immersion</li>
+                        <li>Diaspora "Return" Tours</li>
+                        <li>Educational Research</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2026 SayTech Ghana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/233248780352" class="whatsapp-float" target="_blank">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.66 20.15 9.3 19.81 8.1 19.14L7.81 18.98L4.69 19.8L5.52 16.72L5.34 16.44C4.6 15.27 4.21 13.92 4.21 12.54C4.21 12.33 4.21 12.12 4.22 11.91C4.22 7.37 7.92 3.67 12.45 3.67M9.75 7.37C9.46 7.37 9.06 7.46 8.73 7.84C8.4 8.22 7.5 9.07 7.5 10.82C7.5 12.56 8.78 14.24 8.95 14.47C9.13 14.71 11.42 18.3 14.96 19.82C15.8 20.19 16.45 20.41 16.95 20.57C17.8 20.84 18.57 20.8 19.18 20.71C19.87 20.61 21.3 19.85 21.6 19.01C21.9 18.17 21.9 17.45 21.81 17.3C21.72 17.15 21.49 17.06 21.12 16.87C20.74 16.68 18.89 15.78 18.54 15.65C18.2 15.53 17.96 15.47 17.71 15.84C17.46 16.22 16.76 17.06 16.55 17.3C16.34 17.54 16.13 17.57 15.75 17.39C15.38 17.2 14.18 16.81 12.77 15.55C11.66 14.56 10.91 13.34 10.7 12.96C10.47 12.58 10.67 12.38 10.86 12.19C11.03 12.03 11.23 11.77 11.42 11.55C11.61 11.33 11.67 11.17 11.8 10.92C11.92 10.67 11.86 10.45 11.77 10.26C11.67 10.07 10.91 8.23 10.6 7.47C10.3 6.74 10 6.84 9.75 6.84L9.75 7.37Z"/></svg>
+        <span>Book on WhatsApp</span>
+    </a>
+
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Handle Form Submission
+        function handleForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('bookingForm');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    
+    submitBtn.innerText = "Sending...";
+    submitBtn.disabled = true;
+
+    fetch(form.action, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            alert("Success! We've received your request. Our team in Tamale will contact you shortly.");
+            form.reset();
+            submitBtn.innerText = "Send Booking Enquiry";
+            submitBtn.disabled = false;
+        })
+        .catch(error => {
+            alert("Error! Something went wrong. Please try again or contact us via WhatsApp.");
+            submitBtn.disabled = false;
+        });
+}
+
+        // Close menu on click (for mobile)
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
