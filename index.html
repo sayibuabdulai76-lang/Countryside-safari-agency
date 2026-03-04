@@ -74,6 +74,71 @@
         .nav-menu a:hover { color: var(--primary); }
         .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
         .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; }
+        /* Navigation & Mobile Fixes */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+.nav-menu li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Mobile Menu - The 'Hidden' State */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Hidden until 'active' class is added */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        display: flex; /* This shows the menu */
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+        background: #2c3e50;
+        display: block;
+    }
+}
 
         /* --- HERO --- */
         .hero {
@@ -434,5 +499,31 @@
             });
         });
     </script>
+    <script>
+    const menuBtn = document.querySelector('#mobile-menu');
+    const navList = document.querySelector('#nav-list');
+
+    // 1. Open/Close menu when clicking the hamburger
+    menuBtn.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+
+    // 2. AUTO-CLOSE: Minimizes the menu when a link is clicked
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navList.classList.remove('active');
+        });
+    });
+
+    // 3. SCROLL-CLOSE: Minimizes the menu if the user scrolls away
+    window.addEventListener('scroll', () => {
+        if (navList.classList.contains('active')) {
+            navList.classList.remove('active');
+        }
+    });
+
+    // --- Keep your existing Booking Form script below this line ---
+</script>
 </body>
+
 </html>
