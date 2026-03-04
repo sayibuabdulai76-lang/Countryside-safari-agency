@@ -400,7 +400,7 @@
                 <div><strong>Response Time:</strong> Within 12 hours</div>
             </div>
             
-            <form id="bookingForm" action="https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec" method="POST">
+            <form id="bookingForm">
                 <div class="form-group">
                     <label>Full Name</label>
                     <input type="text" name="userName" required placeholder="Your name">
@@ -554,9 +554,42 @@
   });
         
 </script>
+    <script>
+  // 1. Define the URL here, NOT in the HTML
+  const scriptURL = '="https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec';
+  
+  const form = document.querySelector('#safari-form');
+  const btn = document.querySelector('#submit-button');
+  const msg = document.querySelector('#success-message');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault(); // STOP the white screen
+    
+    btn.disabled = true;
+    btn.innerText = "Sending...";
+
+    fetch(scriptURL, { 
+        method: 'POST', 
+        mode: 'no-cors', // Important for Google Script security
+        body: new FormData(form)
+    })
+    .then(() => {
+        // Hide the form and show the success message
+        form.style.display = 'none';
+        msg.style.display = 'block';
+        console.log('Success!');
+    })
+    .catch(error => {
+        btn.disabled = false;
+        btn.innerText = "Error - Try Again";
+        console.error('Error!', error.message);
+    });
+  });
+</script>
 </body>
 
 </html>
+
 
 
 
