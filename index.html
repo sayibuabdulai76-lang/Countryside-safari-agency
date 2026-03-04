@@ -530,9 +530,35 @@
 
     // --- Keep your existing Booking Form script below this line ---
 </script>
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec'; // Paste your link here
+  const form = document.getElementById('safari-booking-form');
+  const btn = document.getElementById('submit-btn');
+  const successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault(); // This stops the "white screen" redirect!
+    
+    btn.disabled = true;
+    btn.innerText = "Sending Enquiry...";
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          btn.style.display = 'none'; // Hide the button
+          successMsg.style.display = 'block'; // Show the green checkmark
+          form.reset(); // Clear the form fields
+      })
+      .catch(error => {
+          btn.disabled = false;
+          btn.innerText = "Try Again";
+          alert("Error! Please check your internet or try again later.");
+      });
+  });
+</script>
 </body>
 
 </html>
+
 
 
 
