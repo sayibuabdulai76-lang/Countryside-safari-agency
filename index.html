@@ -67,78 +67,25 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+        }
+        .logo img { height: 50px; width: auto; border-radius: 4px; }
         .logo span { color: var(--accent); }
+        
         .nav-menu { display: flex; gap: 30px; align-items: center; }
         .nav-menu a { font-weight: 500; font-size: 0.95rem; }
         .nav-menu a:hover { color: var(--primary); }
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger span { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; }
-        /* Navigation & Mobile Fixes */
-.navbar {
-    position: sticky;
-    top: 0;
-    background: #ffffff;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 20px;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-}
-
-.nav-menu li a {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-}
-
-/* Mobile Menu - The 'Hidden' State */
-@media screen and (max-width: 768px) {
-    .nav-menu {
-        display: none; /* Hidden until 'active' class is added */
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    }
-
-    .nav-menu.active {
-        display: flex; /* This shows the menu */
-    }
-
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-    }
-
-    .bar {
-        width: 25px;
-        height: 3px;
-        margin: 5px;
-        background: #2c3e50;
-        display: block;
-    }
-}
+        
+        /* Mobile Hamburger Icon */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 10px; }
+        .hamburger .bar { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; transition: 0.3s; }
 
         /* --- HERO --- */
         .hero {
@@ -202,108 +149,29 @@
         @media (max-width: 768px) {
             .nav-menu { 
                 display: none; position: absolute; top: 80px; left: 0; width: 100%; 
-                background: white; flex-direction: column; padding: 40px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                background: white; flex-direction: column; padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                border-top: 1px solid #eee;
             }
             .nav-menu.active { display: flex; }
+            .nav-menu li { text-align: center; margin-bottom: 15px; }
             .hamburger { display: flex; }
             .hero h1 { font-size: 2.5rem; }
             .contact-container { grid-template-columns: 1fr; gap: 40px; }
             .hero-cta { flex-direction: column; }
             .section { padding: 60px 0; }
         }
-
-        /* --- BRAND DESIGN SYSTEM --- */
-        :root {
-            --primary: #2D5A27;    /* Savannah Green */
-            --accent: #E67E22;     /* Earthy Orange */
-            --dark: #1F2937;       /* Charcoal */
-            --light-bg: #FDFBF7;   /* Warm Paper */
-            --white: #FFFFFF;
-            --text-muted: #6B7280;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        /* --- BASE RESET --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--white);
-            -webkit-font-smoothing: antialiased;
-        }
-        h1, h2, h3, .brand-font { font-family: 'Playfair Display', serif; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; border-radius: 8px; }
-        .container { width: 90%; max-width: 1140px; margin: 0 auto; }
-        .section { padding: 80px 0; }
-        .text-center { text-align: center; }
-
-        /* --- UI COMPONENTS --- */
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            text-align: center;
-        }
-        .btn-primary { background: var(--primary); color: var(--white); }
-        .btn-primary:hover { background: #23471e; transform: translateY(-2px); }
-        .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
-        .btn-outline:hover { background: var(--primary); color: var(--white); }
-
-        /* --- NAVIGATION --- */
-        header {
-            background: var(--white);
-            height: 80px;
-            display: flex;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        
-        /* UPDATED LOGO CSS */
-        .logo { 
-            font-size: 1.3rem; 
-            font-weight: 700; 
-            color: var(--primary); 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-        }
-        .logo img { 
-            height: 50px; 
-            width: auto; 
-            border-radius: 4px; 
-        }
-        .logo span { color: var(--accent); }
-
-        .nav-menu { display: flex; gap: 30px; align-items: center; }
-        .nav-menu a { font-weight: 500; font-size: 0.95rem; }
-        .nav-menu a:hover { color: var(--primary); }
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger span { width: 25px; height: 3
     </style>
 </head>
 <body>
 
     <header>
         <div class="container nav-wrapper">
-            <a href="index.html" class="logo" img src="logo.jpeg" style="height: 50px;">
-                Countryside Safari <span>Ghana</span></a>
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg">
+                Countryside Safari <span>Agency</span>
+            </a>
+            
             <nav>
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-                </div>
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="services.html">Services</a></li>
@@ -311,8 +179,11 @@
                     <li><a href="#contact" class="btn btn-primary">Book Your Tour</a></li>
                 </ul>
             </nav>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
+
+            <div class="hamburger" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </div>
     </header>
@@ -399,36 +270,43 @@
                 <div><strong>Response Time:</strong> Within 12 hours</div>
             </div>
             
-            <form id="bookingForm">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="userName" required placeholder="Your name">
-                </div>
-                <div class="grid" style="gap: 15px; grid-template-columns: 1fr 1fr; margin-bottom: 20px;">
-                    <div>
-                        <label>Email</label>
-                        <input type="email" name="userEmail" required placeholder="email@address.com">
+            <div>
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="userName" required placeholder="Your name">
                     </div>
-                    <div>
-                        <label>Country</label>
-                        <input type="text" name="userCountry" required placeholder="e.g. Ghana, UK, USA">
+                    <div class="grid" style="gap: 15px; grid-template-columns: 1fr 1fr; margin-bottom: 20px;">
+                        <div>
+                            <label>Email</label>
+                            <input type="email" name="userEmail" required placeholder="email@address.com">
+                        </div>
+                        <div>
+                            <label>Country</label>
+                            <input type="text" name="userCountry" required placeholder="e.g. Ghana, UK, USA">
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label>Preferred Tour</label>
+                        <select name="tourSelect">
+                            <option>Mole Elephant Safari</option>
+                            <option>Larabanga Heritage Tour</option>
+                            <option>Northern Village Immersion</option>
+                            <option>Custom Itinerary (Research/NGO/Photo)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message / Travel Dates</label>
+                        <textarea name="userMsg" rows="4" placeholder="Tell us about your group size and when you'd like to visit..."></textarea>
+                    </div>
+                    <button type="submit" id="submit-button" class="btn btn-primary" style="width: 100%;">Send Booking Enquiry</button>
+                </form>
+
+                <div id="success-message" style="display:none; text-align:center; padding:20px; color: #2D5A27; font-weight: bold; background: #e8f5e9; border-radius: 8px; margin-top: 20px;">
+                    <h3>✓ Enquiry Sent!</h3>
+                    <p>We've received your request and will contact you shortly.</p>
                 </div>
-                <div class="form-group">
-                    <label>Preferred Tour</label>
-                    <select name="tourSelect">
-                        <option>Mole Elephant Safari</option>
-                        <option>Larabanga Heritage Tour</option>
-                        <option>Northern Village Immersion</option>
-                        <option>Custom Itinerary (Research/NGO/Photo)</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Message / Travel Dates</label>
-                    <textarea name="userMsg" rows="4" placeholder="Tell us about your group size and when you'd like to visit..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Booking Enquiry</button>
-            </form>
+            </div>
         </div>
     </section>
 
@@ -470,138 +348,52 @@
     </a>
 
     <script>
-        // Toggle Mobile Menu
-        function toggleMenu() {
-            document.getElementById('navMenu').classList.toggle('active');
-        }
+        // --- 1. MENU LOGIC ---
+        const menuBtn = document.querySelector('#mobile-menu');
+        const navMenu = document.querySelector('#navMenu');
 
-        // Handle Form Submission
-        function handleForm(e) {
-    e.preventDefault();
-    const form = document.getElementById('bookingForm');
-    const submitBtn = form.querySelector('button[type="submit"]');
-    
-    submitBtn.innerText = "Sending...";
-    submitBtn.disabled = true;
-
-    fetch(form.action, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            alert("Success! We've received your request. Our team in Tamale will contact you shortly.");
-            form.reset();
-            submitBtn.innerText = "Send Booking Enquiry";
-            submitBtn.disabled = false;
-        })
-        .catch(error => {
-            alert("Error! Something went wrong. Please try again or contact us via WhatsApp.");
-            submitBtn.disabled = false;
+        // Toggle open/close on click
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-}
 
-        // Close menu on click (for mobile)
+        // Close when a link is clicked
         document.querySelectorAll('.nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                document.getElementById('navMenu').classList.remove('active');
+                navMenu.classList.remove('active');
             });
         });
-    </script>
-    <script>
-    const menuBtn = document.querySelector('#mobile-menu');
-    const navList = document.querySelector('#nav-list');
 
-    // 1. Open/Close menu when clicking the hamburger
-    menuBtn.addEventListener('click', () => {
-        navList.classList.toggle('active');
-    });
-
-    // 2. AUTO-CLOSE: Minimizes the menu when a link is clicked
-    document.querySelectorAll('.nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            navList.classList.remove('active');
+        // Close when scrolling
+        window.addEventListener('scroll', () => {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
         });
-    });
+
+        // --- 2. FORM SUBMISSION LOGIC ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec';
+        const form = document.getElementById('bookingForm');
+        const btn = document.getElementById('submit-button');
+        const msg = document.getElementById('success-message');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // This is the magic lock that prevents the white screen redirect!
+            
+            btn.disabled = true;
+            btn.innerText = "Sending Enquiry...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    form.style.display = 'none'; // Make the form disappear
+                    msg.style.display = 'block'; // Show the friendly success text
+                })
+                .catch(error => {
+                    btn.disabled = false;
+                    btn.innerText = "Send Booking Enquiry";
+                    alert("Error! Something went wrong. Please check your internet or contact us via WhatsApp.");
+                });
+        });
     </script>
-    <script>
-    // 3. SCROLL-CLOSE: Minimizes the menu if the user scrolls away
-    window.addEventListener('scroll', () => {
-        if (navList.classList.contains('active')) {
-            navList.classList.remove('active');
-        }
-    });
-    </script>
-    <script>
-    // --- Keep your existing Booking Form script below this line ---
-        
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec'; // Paste your link here
-  const form = document.getElementById('safari-booking-form');
-  const btn = document.getElementById('submit-btn');
-  const successMsg = document.getElementById('form-success');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault(); // This stops the "white screen" redirect!
-    
-    btn.disabled = true;
-    btn.innerText = "Sending Enquiry...";
-
-    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => {
-          btn.style.display = 'none'; // Hide the button
-          successMsg.style.display = 'block'; // Show the green checkmark
-          form.reset(); // Clear the form fields
-      })
-      .catch(error => {
-          btn.disabled = false;
-          btn.innerText = "Try Again";
-          alert("Error! Please check your internet or try again later.");
-      });
-  });
-        
-</script>
-    <script>
-  // 1. Define the URL here, NOT in the HTML
-  const scriptURL = '="https://script.google.com/macros/s/AKfycbzXlTco_zIPQrLQTaPiRnNVs7IlTqv9CRM7CZW2VvHNTuHp61Ltb8Fi2UYiQgFYQmhMxg/exec';
-  
-  const form = document.querySelector('#safari-form');
-  const btn = document.querySelector('#submit-button');
-  const msg = document.querySelector('#success-message');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault(); // STOP the white screen
-    
-    btn.disabled = true;
-    btn.innerText = "Sending...";
-
-    fetch(scriptURL, { 
-        method: 'POST', 
-        mode: 'no-cors', // Important for Google Script security
-        body: new FormData(form)
-    })
-    .then(() => {
-        // Hide the form and show the success message
-        form.style.display = 'none';
-        msg.style.display = 'block';
-        console.log('Success!');
-    })
-    .catch(error => {
-        btn.disabled = false;
-        btn.innerText = "Error - Try Again";
-        console.error('Error!', error.message);
-    });
-  });
-</script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
