@@ -64,13 +64,28 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        
+        /* UPDATED LOGO CSS */
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            font-size: 1.3rem; 
+            font-weight: 700; 
+            color: var(--primary); 
+        }
+        .logo img { height: 50px; width: auto; border-radius: 4px; }
         .logo span { color: var(--accent); }
+        
         .nav-menu { display: flex; gap: 30px; align-items: center; }
         .nav-menu a { font-weight: 500; font-size: 0.95rem; }
         .nav-menu a:hover { color: var(--primary); }
 
-        /* --- PAGE HEADER --- */
+        /* Mobile Hamburger Icon */
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 10px; }
+        .hamburger .bar { width: 25px; height: 3px; background: var(--dark); border-radius: 2px; transition: 0.3s; }
+
+        /* --- PAGE HERO --- */
         .page-hero {
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1920');
             background-size: cover;
@@ -135,8 +150,16 @@
         footer { background: #111; color: #aaa; padding: 60px 0 20px; margin-top: 80px; }
         .footer-bottom { border-top: 1px solid #222; padding-top: 20px; font-size: 0.9rem; }
 
+        /* --- MOBILE ADAPTATIONS --- */
         @media (max-width: 768px) {
-            .nav-menu { display: none; }
+            .nav-menu { 
+                display: none; position: absolute; top: 80px; left: 0; width: 100%; 
+                background: white; flex-direction: column; padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                border-top: 1px solid #eee;
+            }
+            .nav-menu.active { display: flex; }
+            .nav-menu li { text-align: center; margin-bottom: 15px; }
+            .hamburger { display: flex; }
             .page-hero h1 { font-size: 2.2rem; }
         }
     </style>
@@ -145,14 +168,24 @@
 
     <header>
         <div class="container nav-wrapper">
-            <a href="index.html" class="logo">Countryside Safari <span>Ghana</span></a>
+            <a href="index.html" class="logo">
+                <img src="logo.jpeg" alt="Countryside Safari Logo">
+                Countryside Safari <span>Agency</span>
+            </a>
+            
             <nav>
-                <ul class="nav-menu">
-                    <li><a href="home page.html">Home</a></li>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="services.html" style="color: var(--primary); font-weight: bold;">Services</a></li>
-                    <li><a href="home page.html">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
+
+            <div class="hamburger" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </header>
 
@@ -242,7 +275,7 @@
                 <p>Contact our Tamale head office for 24/7 support and regional expertise.</p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
                     <a href="tel:+233248780352" class="btn btn-primary" style="background: var(--accent);">Call: 024-878-0352</a>
-                    <a href="mailto:bookings@cssa.agency" class="btn btn-primary" style="background: white; color: var(--primary);">Email Us Now</a>
+                    <a href="mailto:booking@cssa.agency" class="btn btn-primary" style="background: white; color: var(--primary);">Email Us Now</a>
                 </div>
             </div>
         </div>
@@ -252,10 +285,33 @@
         <div class="container text-center">
             <p>&copy; 2026 SayTech Ghana. All Rights Reserved.</p>
             <div class="footer-bottom" style="margin-top: 20px;">
-                <a href="home page.html">Home</a> | <a href="home page.html">Contact</a>
+                <a href="index.html">Home</a> | <a href="index.html#contact">Contact</a>
             </div>
         </div>
     </footer>
 
+    <script>
+        const menuBtn = document.querySelector('#mobile-menu');
+        const navMenu = document.querySelector('#navMenu');
+
+        // Toggle open/close on click
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close when a link is clicked
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Close when scrolling
+        window.addEventListener('scroll', () => {
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
