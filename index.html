@@ -293,6 +293,25 @@
                     alert("Error! Something went wrong. Please check your internet or contact us via WhatsApp.");
                 });
         });
+        // --- 3. PRIVACY POLICY MODAL LOGIC ---
+        const privacyModal = document.getElementById('privacy-modal');
+        const continueBtn = document.getElementById('continue-btn');
+
+        // Check if the user has already accepted the policy
+        window.addEventListener('load', () => {
+            if(!localStorage.getItem('privacyAccepted')) {
+                privacyModal.style.display = 'flex'; // Show modal
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
+            }
+        });
+
+        // Close modal when they click continue
+        continueBtn.addEventListener('click', () => {
+            privacyModal.style.display = 'none'; // Hide modal
+            document.body.style.overflow = 'auto'; // Restore scrolling
+            localStorage.setItem('privacyAccepted', 'true'); // Remember their choice
+        });
     </script>
+    
 </body>
 </html>
