@@ -196,7 +196,7 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     flex-direction: column;
 }
 
-/*Style Typography */
+/* Style Typography */
 .modal-content h2 {
     color: #000000;
     font-family: 'Inter', sans-serif;
