@@ -178,8 +178,7 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     left: 0; 
     width: 100%; 
     height: 100%;
-    /* A darker, solid overlay to block out the background completely */
-    background: rgba(0, 0, 0, 0.85); 
+    background: rgba(0, 0, 0, 0.85); /* Dark solid screen focus */
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -189,94 +188,93 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
 .modal-content {
     background: #ffffff;
     width: 100%;
-    max-width: 700px;
-    border-radius: 0px; /* Sharp, corporate edges */
-    border-top: 6px solid var(--primary); /* Signature green top accent line */
-    padding: 40px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    max-width: 580px; /* Slimmer, elegant profile layout */
+    border-radius: 0px; /* Sharp corporate edges */
+    padding: 45px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
-    max-height: 85vh;
 }
 
-/* Modal Typography Update */
+/*Style Typography */
 .modal-content h2 {
     color: #000000;
     font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 5px;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
 }
 
-.modal-scroll-area {
-    overflow-y: auto;
-    margin-top: 20px;
-    padding-right: 20px;
+/* Accent Accent Line under Heading */
+.deloitte-divider {
+    width: 40px;
+    height: 4px;
+    background-color: var(--primary); /* Signature green line */
+    margin-bottom: 25px;
+}
+
+.modal-short-text {
     font-size: 0.95rem;
     color: #333333;
-    line-height: 1.7;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 20px;
+    line-height: 1.65;
 }
 
-/* Corporate Uppercase Subheadings */
-.modal-scroll-area h3 {
-    color: #000000;
-    margin: 25px 0 10px;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
+.modal-short-text p {
+    margin-bottom: 16px;
+}
+
+/* Clean Document Attachment UI Box */
+.modal-pdf-link-container {
+    background-color: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    padding: 15px 20px;
+    margin: 25px 0;
+}
+
+.modal-pdf-link {
+    color: #000000 !important;
     font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    transition: var(--transition);
 }
 
-.modal-scroll-area ul {
-    margin-left: 20px;
-    margin-bottom: 15px;
+.modal-pdf-link svg {
+    color: var(--primary); /* Icon is green */
 }
 
-.modal-scroll-area li {
-    margin-bottom: 8px;
+.modal-pdf-link:hover {
+    color: var(--primary) !important;
+    text-decoration: underline;
 }
 
-/* --- THE STRICTLY GREEN BUTTON --- */
+.consent-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* THE STRICTLY GREEN BUTTON */
 #continue-btn {
-    background-color: var(--primary) !important; /* Forces the button to be your Savannah Green */
+    background-color: var(--primary) !important; /* Savannah Green */
     color: #ffffff !important;
     border: none;
-    border-radius: 0px; /* Sharp edges to match the modal */
+    border-radius: 0px; /* Sharp edges */
     width: 100%;
-    margin-top: 20px;
-    padding: 18px;
-    font-size: 1.05rem;
+    margin-top: 25px;
+    padding: 16px;
+    font-size: 0.95rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
 }
 
 #continue-btn:hover {
-    background-color: #1a3617 !important; /* A darker, richer green when hovered */
-}
-
-/* --- PDF DOCUMENT LINKS (Updated to match) --- */
-.policy-links {
-    margin-top: 35px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-.policy-links p { margin-bottom: 12px; }
-.policy-links a {
-    color: #000000; /* Black links for high contrast */
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: var(--transition);
-}
-.policy-links a:hover { 
-    color: var(--primary); /* Turns green when hovered */
-    text-decoration: underline; 
+    background-color: #1a3617 !important; /* Premium deep dark green on hover */
 }
