@@ -147,7 +147,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--p
 
 /* --- FOOTER --- */
 footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem; margin-top: 0; }
-.services-page footer { margin-top: 80px; } /* Adds space for services page */
+.services-page footer { margin-top: 80px; } 
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
 .footer-logo { color: white; font-size: 1.3rem; margin-bottom: 20px; font-weight: 700; }
 .footer-title { color: white; margin-bottom: 20px; font-weight: 600; }
@@ -169,9 +169,16 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     .contact-container { grid-template-columns: 1fr; gap: 40px; }
     .hero-cta { flex-direction: column; }
     .section { padding: 60px 0; }
-} /* <-- FIXED CLOSING MEDIA QUERY BRACKET HERE */
 
-/* --- PRIVACY MODAL STYLES (Moved out to Global Level) --- */
+    /* --- SLIM PADDING FOR MOBILE PHONES --- */
+    .modal-content {
+        padding: 25px; /* Reduces excessive spacing on small touch screens */
+    }
+} /* Media query closes cleanly here */
+
+/* ========================================================
+   GLOBAL PRIVACY MODAL STYLES (Deloitte Enterprise Design)
+   ======================================================== */
 .modal-overlay {
     display: none; 
     position: fixed;
@@ -179,7 +186,7 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     left: 0; 
     width: 100%; 
     height: 100%;
-    background: rgba(0, 0, 0, 0.85); /* Dark solid screen focus */
+    background: rgba(0, 0, 0, 0.85); /* Dark solid focal backdrop */
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -189,15 +196,20 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
 .modal-content {
     background: #ffffff;
     width: 100%;
-    max-width: 580px; /* Slimmer, elegant profile layout */
-    border-radius: 0px; /* Sharp corporate edges */
+    max-width: 580px; /* Elegant, focused structural layout */
+    border-radius: 0px; /* Authoritative corporate sharp edges */
     padding: 45px;
     box-shadow: 0 25px 50px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
+    
+    /* --- CRITICAL SAFE SCROLL RULES FOR MOBILE PHONES --- */
+    max-height: 85vh;       /* Restricts container height to 85% of screen view */
+    overflow-y: auto;       /* Implements smooth vertical scrolling inside the box */
+    -webkit-overflow-scrolling: touch; /* Ensures fluid inertial scroll mechanics on iOS */
 }
 
-/* Style Typography */
+/* Structural Header Style */
 .modal-content h2 {
     color: #000000;
     font-family: 'Inter', sans-serif;
@@ -207,11 +219,11 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     margin-bottom: 12px;
 }
 
-/* Accent Line under Heading */
+/* Premium Corporate Accent Line */
 .deloitte-divider {
     width: 40px;
     height: 4px;
-    background-color: var(--primary); /* Signature green line */
+    background-color: var(--primary); /* Built off Savannah Green variable */
     margin-bottom: 25px;
 }
 
@@ -225,7 +237,7 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     margin-bottom: 16px;
 }
 
-/* Clean Document Attachment UI Box */
+/* Premium Document Attachment Container */
 .modal-pdf-link-container {
     background-color: #f9f9f9;
     border: 1px solid #e5e5e5;
@@ -245,7 +257,7 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
 }
 
 .modal-pdf-link svg {
-    color: var(--primary); /* Icon is green */
+    color: var(--primary); /* Attachment icon color matching theme */
 }
 
 .modal-pdf-link:hover {
@@ -259,12 +271,12 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     line-height: 1.4;
 }
 
-/* THE STRICTLY GREEN BUTTON */
+/* --- THE STRICTLY GREEN CONFIRMATION BUTTON --- */
 #continue-btn {
-    background-color: var(--primary) !important; /* Savannah Green */
+    background-color: var(--primary) !important; /* Locks theme color value */
     color: #ffffff !important;
     border: none;
-    border-radius: 0px; /* Sharp edges */
+    border-radius: 0px; /* Sharp corners matching container structure */
     width: 100%;
     margin-top: 25px;
     padding: 16px;
@@ -277,5 +289,5 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
 }
 
 #continue-btn:hover {
-    background-color: #1a3617 !important; /* Premium deep dark green on hover */
+    background-color: #1a3617 !important; /* Transition to a deep premium green on hover */
 }
