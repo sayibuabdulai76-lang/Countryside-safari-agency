@@ -169,8 +169,9 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     .contact-container { grid-template-columns: 1fr; gap: 40px; }
     .hero-cta { flex-direction: column; }
     .section { padding: 60px 0; }
+} /* <-- FIXED CLOSING MEDIA QUERY BRACKET HERE */
 
-   /* --- PRIVACY MODAL STYLES --- */
+/* --- PRIVACY MODAL STYLES (Moved out to Global Level) --- */
 .modal-overlay {
     display: none; 
     position: fixed;
@@ -206,7 +207,7 @@ footer { background: #111; color: #aaa; padding: 60px 0 20px; font-size: 0.9rem;
     margin-bottom: 12px;
 }
 
-/* Accent Accent Line under Heading */
+/* Accent Line under Heading */
 .deloitte-divider {
     width: 40px;
     height: 4px;
